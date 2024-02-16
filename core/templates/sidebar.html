@@ -1,0 +1,64 @@
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+<aside class="left-sidebar" data-sidebarbg="skin1">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav" class="p-t-30">
+                {% for item in sidebar_items %}
+                    <li class="sidebar-item">
+                        {% if item.url %}
+                            <!-- Opcion sin dropdown -->
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{item.url}}"
+                                aria-expanded="false"><i class="text-dark {{ item.icon }}"></i><span class="hide-menu"> {{ item.title }} </span>
+                            </a>
+                        {% else %}
+                            <!-- Opcion con dropdown -->
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                                <i class="text-dark {{ item.icon }}"></i><span class="hide-menu"> {{ item.title }} </span>
+                            </a>
+                            {% if item.sub_items %}
+                                <ul aria-expanded="false" class="collapse first-level">
+                                    {% for sub_item in item.sub_items %}
+                                        <li class="sidebar-item">
+                                            {% if sub_item.url %}
+                                            <!-- Usa la función reverse para obtener la URL final -->
+                                            <a href="{{ sub_item.url }}" class="sidebar-link">
+                                                <i class="mdi text-dark {{ sub_item.icon }}"></i><span class="hide-menu"> {{ sub_item.title }} </span>
+                                            </a>  
+                                            {% else %}
+                                            <!-- Usa # si no hay url valida -->
+                                            <a href="javascript:void(0)" class="sidebar-link">
+                                                <i class="mdi text-dark {{ sub_item.icon }}"></i><span class="hide-menu"> {{ sub_item.title }} </span>
+                                            </a> 
+                                            {% endif %}
+                                                
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>
+<!-- ============================================================== -->
+<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+
+<script>
+    // Escucha el evento 'change' del select
+    sucursalId = document.getElementById('sucursal_id')
+    if (sucursalId){
+        sucursalId.addEventListener('change', function () {
+            // Envía el formulario automáticamente cuando se selecciona una sucursal
+            document.getElementById('sucursal-change-form').submit();
+        })
+}
+</script>

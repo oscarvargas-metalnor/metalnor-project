@@ -1,0 +1,54 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html dir="ltr" lang="es">
+    
+    <head>
+        {% include 'include/css.html' %}
+        <title>{% block title %}Inicio{% endblock %} | Metalnor</title>
+        {% block extra_css %}{% endblock extra_css %}
+    </head>
+
+    <body>
+
+        <!-- Preloader -->
+        {% include 'preloader.html' %}
+        <!-- End Preloader -->
+
+        <div id="main-wrapper">
+
+            <!-- Sidebar -->
+            {% include 'sidebar.html' %}
+            <!-- End of Sidebar -->
+            
+            <!-- Topbar -->
+            {% include 'navbar.html' %}
+            <!-- End of Topbar -->
+
+            <!-- Dinamic content -->
+            <div class="page-wrapper">
+                <div class="container-fluid">
+                    
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">{% block heading %}{% endblock %}</h1>
+                    </div>
+
+                    <!--Messages will appear here-->
+                    {% include 'components/messages/messages.html' with messages=messages%}
+
+                    {% block content %}
+                    {% endblock content%}
+                </div>
+            </div>
+            <!--End Dinamic content-->
+            
+            <!-- Footer -->
+            {% include 'footer.html' %}
+            <!-- End of Footer -->
+        </div>
+        {% include 'include/js.html' %}
+        {% block extra_js %}{% endblock %}
+    </body>
+
+</html>

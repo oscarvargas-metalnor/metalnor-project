@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<!-- Css para el formulario wizard -->
+<link href="{% static 'core/css/jquery.steps.css' %}" rel="stylesheet">
+<link href="{% static 'core/css/steps.css' %}" rel="stylesheet">
+{% endblock extra_css %}
+
+{% block heading %}Alta puesto{% endblock %}
+{% block content %}
+{% include "components/puestos/puesto-create.html" %}
+{% endblock content %}
+
+{% block extra_js %}
+{% endblock %}

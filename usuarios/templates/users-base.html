@@ -1,0 +1,50 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html dir="ltr" lang="es">
+
+<head>
+    {% include 'include/css.html' %}
+    <title>{% block title %}Iniciar sesion{% endblock %}</title>
+    {% block extra_css %}{% endblock extra_css %}
+</head>
+
+<body>
+    <!-- Preloader -->
+    {% include 'preloader.html' %}
+    <!-- End Preloader -->
+    <div class="main-wrapper">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <!-- ============================================================== -->
+    <!-- All Required js -->
+    <!-- ============================================================== -->
+    <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{% static 'assets/libs/popper.js/dist/umd/popper.min.js' %}"></script>
+    <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugin js -->
+    <!-- ============================================================== -->
+    <script>
+
+    $('[data-toggle="tooltip"]').tooltip();
+    $(".preloader").fadeOut();
+    // ============================================================== 
+    // Login and Recover Password 
+    // ============================================================== 
+    $('#to-recover').on("click", function() {
+        $("#loginform").slideUp();
+        $("#recoverform").fadeIn();
+    });
+    $('#to-login').click(function(){
+        
+        $("#recoverform").hide();
+        $("#loginform").fadeIn();
+    });
+    </script>
+
+</body>
+
+</html>

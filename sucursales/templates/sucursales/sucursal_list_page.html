@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<!-- Css para el formulario wizard -->
+{% endblock extra_css %}
+
+{% block heading %}Lisa de sucursales{% endblock %}
+{% block content %}
+{% include "components/sucursales/sucursal-list.html" %}
+{% endblock content %}
+
+{% block extra_js %}
+{% endblock %}

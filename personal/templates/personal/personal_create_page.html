@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+{% endblock extra_css %}
+
+{% block heading %}Nuevo personal{% endblock %}
+{% block content %}
+{% include "components/personal/personal-create.html" %}
+{% endblock content %}
+
+{% block extra_js %}
+<script src="{% static 'core/js/jquery.formset.js' %}"></script>
+{% endblock %}

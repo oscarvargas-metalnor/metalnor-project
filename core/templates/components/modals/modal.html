@@ -1,0 +1,21 @@
+<div class="modal fade" data-extra="{{data_extra}}" id="{{ modal_id }}" tabindex="-1" role="dialog" aria-labelledby="{{ modal_label }}" aria-hidden="true">
+    <div class="modal-dialog {{ modal_size }}" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="{{ modal_label }}">{{ modal_title }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="{{ form_id }}">
+            <div id="{{modal_body_id}}" class="modal-body">
+                    {{ modal_body }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect waves-light" data-dismiss="modal">Cerrar</button>
+                    <a id="{{ button_id }}" href="{{ button_url }}" class="btn btn-success waves-effect waves-light">{{ button_text }}</a>
+                </div>
+            </form>
+            </div>
+    </div>
+</div>

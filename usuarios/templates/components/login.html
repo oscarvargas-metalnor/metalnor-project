@@ -1,0 +1,80 @@
+{% extends "users-base.html" %}
+{% load static %}
+{% block title %}Iniciar Sesion{% endblock %}
+
+{% block content %}
+    <!-- ============================================================== -->
+    <!-- Login box.scss -->
+    <!-- ============================================================== -->
+    <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
+        <!--Messages will appear here-->
+        <div class="auth-box bg-dark border-top border-secondary">
+            {% include 'components/messages/messages.html' with messages=messages%}
+            <div id="loginform">
+                <div class="text-center p-t-20 p-b-20">
+                    <span class="db"><img src="{% static 'assets/images/logo.webp' %}" alt="logo" /></span>
+                </div>
+                <!-- Form -->
+                <form class="form-horizontal m-t-20" id="loginform" method="post">
+                    {% csrf_token %}
+                    <div class="row p-b-30">
+                        <div class="col-12">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
+                                </div>
+                                {{ form.username }}
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
+                                </div>
+                                {{ form.password }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row border-top border-secondary">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <div class="d-flex flex-column flex-md-row">
+                                    <button class="btn btn-success m-2" type="submit">Iniciar sesión</button>
+                                    <button class="btn btn-info m-2" id="to-recover" type="button"><i class="fa fa-lock m-r-5"></i> No recuerda su contraseña?</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="recoverform">
+                <div class="text-center">
+                    <span class="text-white">Ingrese su dirección de correo electrónico a continuación y le enviaremos instrucciones sobre cómo recuperar una contraseña.</span>
+                </div>
+                <div class="row m-t-20">
+                    <!-- Form -->
+                    <form action="{% url "usuarios_app:recovery_password" %}" class="col-12" method="post">
+                        {% csrf_token %}
+                        <!-- email -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-danger text-white" id="basic-addon1"><i class="ti-email"></i></span>
+                            </div>
+                            <input type="email" class="form-control form-control-lg" name="email" id="email" required placeholder="Correo electronico" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <!-- pwd -->
+                        <div class="row m-t-20 p-t-20 border-top border-secondary">
+                            <div class="col-12">
+                                <a class="btn btn-success" href="#" id="to-login" name="action">Ir a inicio de sesión</a>
+                                <button class="btn btn-info float-right" type="submit" name="action">Recuperar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Login box.scss -->
+    <!-- ============================================================== -->
+{% endblock content %}
+
+

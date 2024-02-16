@@ -1,0 +1,108 @@
+<ul id="sidebarnav" class="p-t-30">
+    <!-- Select del campamento -->
+    <li class="sidebar-item">
+        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi text-dark mdi-store"></i><span class="hide-menu">Sucursales </span></a>
+        <ul aria-expanded="false" class="collapse first-level">
+            <form class="d-flex align-items-center justify-content-center" method="post" action="{% url 'sucursales_app:cambio_sucursal' %}" id="sucursal-change-form">
+                {% csrf_token %}                         
+                <!-- PARA QUE EL ADMIN SE MUEVA DE SUCURSAL EN SUCURSAL -->
+                <select name="sucursal_id" id="sucursal_id" class="form-control fs--1 m-2 w-75">
+                    {% for sucursal in sucursales %}
+                    <option value="{{ sucursal.id }}" {% if sucursal.id == request.session.sucursal_actual %}selected{% endif %}>
+                        {{ sucursal }}
+                    </option>
+                    {% endfor %}
+                </select>
+                <!-- <button type="submit" style="display: none;"></button> -->
+            </form>
+
+            <script>
+                // Escucha el evento 'change' del select
+                document.getElementById('sucursal_id').addEventListener('change', function () {
+                    // Envía el formulario automáticamente cuando se selecciona una sucursal
+                    document.getElementById('sucursal-change-form').submit();
+                });
+            </script>
+
+        </ul>
+    </li>
+    <!-- Panel de control -->
+    <li class="sidebar-item">
+        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'core_app:home' %}"
+            aria-expanded="false"><i class="mdi text-dark mdi-view-dashboard"></i><span class="hide-menu">
+                Panel de control</span>
+        </a>
+    </li>
+    <!-- Proveedores -->
+    <li class="sidebar-item">
+        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+            <i class="mdi text-dark mdi-truck"></i><span class="hide-menu">Proveedores </span>
+        </a>
+        <ul aria-expanded="false" class="collapse first-level">
+            <li class="sidebar-item">
+                <a href="ruta-para-cargar-proveedor" class="sidebar-link">
+                    <i class="mdi text-dark mdi-plus-box"></i><span class="hide-menu"> Nuevo Proveedor </span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="" class="sidebar-link">
+                    <i class="mdi text-dark mdi-account-multiple"></i><span class="hide-menu"> Lista de Proveedores </span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="ruta-para-realizar-pedido" class="sidebar-link">
+                    <i class="mdi text-dark mdi-truck-delivery"></i><span class="hide-menu"> Realizar Pedido </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <!-- Recursos humanos -->
+    <li class="sidebar-item">
+        <a class="sidebar-link has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+            <i class="mdi text-dark mdi-account-circle"></i><span class="hide-menu"> Administrar personal </span>
+        </a>
+        <ul aria-expanded="false" class="collapse first-level">
+            <li class="sidebar-item">
+                <a href="{% url 'usuarios_app:user_create' %}" class="sidebar-link">
+                    <i class="mdi text-dark mdi-plus-box"></i><span class="hide-menu"> Administracion del personal </span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{% url 'usuarios_app:user_list' %}" class="sidebar-link">
+                    <i class="mdi text-dark mdi-view-list"></i><span class="hide-menu"> Lista de Cuentas </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <!-- Inventario -->
+    <li class="sidebar-item">
+        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+            <i class="mdi text-dark mdi-widgets"></i><span class="hide-menu"> Inventario </span>
+        </a>
+        <ul aria-expanded="false" class="collapse first-level">
+            <li class="sidebar-item">
+                <a href="" class="sidebar-link">
+                    <i class="mdi text-dark mdi-view-list"></i><span class="hide-menu"> Lista de items del inventario </span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="ruta-para-crear-item" class="sidebar-link">
+                    <i class="mdi text-dark mdi-plus-box"></i><span class="hide-menu"> Nuevo item </span>
+                </a>
+            </li>
+            <!--Divisor dentro de un modulo-->
+            <div class="border-top mx-4 my-1"></div>
+            
+            <li class="sidebar-item">
+                <a href="" class="sidebar-link">
+                    <i class="mdi text-dark mdi-view-list"></i><span class="hide-menu"> Lista de productos </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <!-- Configuraciones -->
+    <li class="sidebar-item">
+        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="ruta-de-configuraciones"
+            aria-expanded="false"><i class="mdi text-dark mdi-settings"></i><span class="hide-menu">Configuraciones</span></a>
+    </li>
+</ul>

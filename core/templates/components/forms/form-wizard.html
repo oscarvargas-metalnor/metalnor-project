@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <div class="card">
+        <div class="card-body wizard-content">
+            <h6 class="card-subtitle"></h6>
+            <form id="create-user-form" method="post" class="m-t-40">
+                {% csrf_token %}
+                <div>
+                    <h3>Cuenta</h3>
+                    <section>
+                        <label for="userName">Nombre de Usuario *</label>
+                        <input id="userName" name="username" type="text" class="required form-control">
+                        <label for="password" class="mt-2">Contraseña *</label>
+                        <input id="password" name="password1" type="password" class="required form-control">
+                        <label for="confirm" class="mt-2">Confirmar Contraseña *</label>
+                        <input id="confirm" name="password2" type="password" class="required form-control">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mt-2">
+                                    <label for="role">Rol de usuario *</label>
+                                    {{ user_form.role }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mt-2">
+                                    <label for="sucursal">Sucursal *</label>
+                                    {{ user_form.sucursal }}
+                                </div>
+                            </div>
+                        </div>
+                        <p>(*) Campos obligatorios</p>
+                    </section>
+                    <h3>Perfil</h3>
+                    <section>
+                        <label for="name" class="mt-2">Nombre *</label>
+                        <input id="name" name="first_name" type="text" class="required form-control">
+                        <label for="surname" class="mt-2">Apellido *</label>
+                        <input id="surname" name="last_name" type="text" class="required form-control">
+                        <label for="email" class="mt-2">Email</label>
+                        <input id="email" name="email" type="text" class="email form-control">
+                        <!-- <label for="address" class="mt-2">Domicilio</label>
+                        <input id="address" name="address" type="text" class=" form-control"> -->
+                        <p>(*) Campos obligatorios</p>
+                    </section>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
+    <!-- .right-sidebar -->
+    <!-- ============================================================== -->
+    <!-- End Right sidebar -->
+    <!-- ============================================================== -->
+</div>

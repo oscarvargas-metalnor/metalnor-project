@@ -1,0 +1,16 @@
+# Entorno virtual
+venv-metalnor
+
+# Compiled Python bytecode
+*.py[cod]
+
+#Secret json
+project/secret.json
+secret.json
+
+__pycache__/
+
+*.json
+.vscode
+
+db.sqlite3

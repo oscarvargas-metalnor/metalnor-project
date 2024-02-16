@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<!-- Css para el formulario wizard -->
+<link href="{% static 'core/css/jquery.steps.css' %}" rel="stylesheet">
+<link href="{% static 'core/css/steps.css' %}" rel="stylesheet">
+{% endblock extra_css %}
+
+{% block heading %}Crear usuarios{% endblock %}
+{% block content %}
+{% include "components/user-create.html" %}
+{% endblock content %}
+
+{% block extra_js %}
+<script src="{% static 'assets/libs/jquery-steps/build/jquery.steps.min.js' %}"></script>
+<script src="{% static 'assets/libs/jquery-validation/dist/jquery.validate.min.js' %}"></script>
+<script src="{% static 'users/js/user-create-wizard-form.js' %}"></script>
+{% endblock %}
